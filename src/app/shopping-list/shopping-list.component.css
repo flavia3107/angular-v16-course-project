@@ -2,6 +2,24 @@ li {
 	margin: 1rem 0;
 }
 
+.flex-row {
+	align-items: flex-end;
+}
+
 ul {
 	list-style: none;
+	max-width: 50rem;
+	margin-top: 5rem;
+	background: #e4e4e499;
+	height: calc(100vh - 20rem);
+	overflow: auto;
+	min-height: 30rem;
+	padding: 2rem 4rem;
+	border-radius: 5px;
+}
+
+.dots {
+	flex: 1;
+	border-bottom: 1px dotted #b5b5b5;
+	margin: 0 0.5rem;
 }

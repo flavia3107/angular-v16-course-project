@@ -6,11 +6,19 @@
           required>
         <input type="number" id="amount" class="form-control" name="amount" placeholder="Amount"
           [ngModel]="editedItem?.amount" required pattern="^[1-9]+[0-9]*$">
-        <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}</button>
-          <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
-          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
-          <button *ngIf="!!editedItem" class="btn btn-primary" type="button" (click)="onClose()">Close</button>
+        <div class="flex-row" [class.editMode]="!!editedItem">
+          <button mat-icon-button type="submit" [disabled]="!f.valid">
+            <mat-icon>done</mat-icon>
+          </button>
+          <button mat-icon-button type="button" (click)="onDelete()" *ngIf="editedItem">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button type="button" (click)="onClear()">
+            <mat-icon>replay</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="!!editedItem" type="button" (click)="onClose()">
+            <mat-icon>close</mat-icon>
+          </button>
         </div>
       </div>
     </form>

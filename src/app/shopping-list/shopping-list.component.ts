@@ -31,7 +31,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     console.log('here')
     this.editMode = true;
     this.activeIndex = index;
-    this.slService.startedEditing.next(index);
+    // this.slService.startedEditing.next(index);
   }
 
   closeEditMode() {
