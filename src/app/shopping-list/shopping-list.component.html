@@ -1,20 +1,26 @@
 <div class="row">
-  <div class="col-xs-10">
+  <div>
     <app-shopping-edit></app-shopping-edit>
-
-    <ul class="list-group">
-      <li *ngFor="let ingredient of ingredients; let i = index">
-        <ng-container *ngIf="editMode && activeIndex === i; else showIngredient">
-          <app-shopping-edit [editedItem]="ingredient" (onCloseClicked)="closeEditMode()"></app-shopping-edit>
-        </ng-container>
-        <ng-template #showIngredient>
-          <div class="flex-row" (click)="onEditItem(i)">
-            <span>{{ingredient?.name}}</span>
-            <span class="dots"></span>
-            <span>{{ingredient?.amount}}</span>
-          </div>
-        </ng-template>
-      </li>
-    </ul>
+    <div class="flex-row space_between">
+      <ul class="list-group">
+        <li class="flex-row space_between title">
+          <span>Item</span>
+          <span>Quantity</span>
+        </li>
+        <li *ngFor="let ingredient of ingredients; let i = index">
+          <ng-container *ngIf="editMode && activeIndex === i; else showIngredient">
+            <app-shopping-edit [editedItem]="ingredient" (onCloseClicked)="closeEditMode()"></app-shopping-edit>
+          </ng-container>
+          <ng-template #showIngredient>
+            <div class="flex-row" (click)="onEditItem(i)">
+              <span>{{ingredient?.name}}</span>
+              <span class="dots"></span>
+              <span>{{ingredient?.amount}}</span>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+      <img src="/assets/cart.svg">
+    </div>
   </div>
 </div>
