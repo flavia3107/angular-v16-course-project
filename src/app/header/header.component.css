@@ -1,7 +1,6 @@
 .logo {
 	display: flex;
 	align-items: center;
-	margin: 0 1rem 0 0;
 }
 
 .logo > img {
@@ -39,4 +38,12 @@
 .logo-txt span {
 	font-weight: lighter;
 	font-size: 0.85rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+.navbar-default {
+	background-color: transparent;
 }
