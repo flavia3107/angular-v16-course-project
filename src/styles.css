@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.flex-row {
+	display: flex;
+	align-items: center;
+}
