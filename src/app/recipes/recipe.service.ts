@@ -9,23 +9,30 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  // private recipes: Recipe[] = [
-  //   new Recipe(
-  //     'Tasty Schnitzel',
-  //     'A super-tasty Schnitzel - just awesome!',
-  //     'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
-  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
-  //   ),
-  //   new Recipe(
-  //     'Big Fat Burger',
-  //     'What else you need to say?',
-  //     'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
-  //     [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
-  //   )
-  // ];
-  private recipes: Recipe[] = [];
+  private recipes: Recipe[] = [
+    new Recipe(
+      'Creamy One Pot Pasta with Zucchini',
+      'This creamy one-pot pasta with zucchini is a simple yet flavorful dish that comes together with minimal effort and maximum comfort. Tender pasta is simmered directly in a rich, velvety sauce that clings to every bite, while fresh zucchini adds a light, wholesome touch. Everything cooks in one pot, making cleanup a breeze and ensuring the flavors meld beautifully. Perfect for busy weeknights or a cozy dinner at home, this dish balances creamy indulgence with the freshness of seasonal vegetables for a meal that feels both hearty and satisfying.',
+      'https://static01.nyt.com/images/2025/07/03/multimedia/DT-Summer-Pasta-with-Zucchini-and-Basil-mblv/DT-Summer-Pasta-with-Zucchini-and-Basil-mblv-mediumSquareAt3X.jpg',
+      [
+        new Ingredient('Zucchini', 3),
+        new Ingredient('Rigatoni', 1),
+        new Ingredient('Lemon', 1),
+        new Ingredient('Olive Oil', 1),
+        new Ingredient('Garlic', 1),
+        new Ingredient('Walnuts', 4),
+        new Ingredient('Water', 4)
+      ]
+    ),
+    new Recipe(
+      'Big Fat Burger',
+      'What else you need to say?',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+      [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
+    )
+  ];
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService) { }
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
