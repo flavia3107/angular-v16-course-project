@@ -62,3 +62,11 @@ button {
 	justify-content: flex-end;
 	margin: 0.5rem 0 0;
 }
+
+.main {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 5rem);
+	overflow: auto;
+	padding-right: 1rem;
+}

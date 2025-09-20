@@ -21,7 +21,17 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
+    for (let ingredient of ingredients) {
+      const existing = this.ingredients.find(
+        (ing) => ing.name.toLowerCase() === ingredient.name.toLowerCase()
+      );
+      if (existing) {
+        existing.amount += ingredient.amount;
+      } else {
+        this.ingredients.push({ ...ingredient });
+      }
+    }
+
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 

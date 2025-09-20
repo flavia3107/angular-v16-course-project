@@ -1,26 +1,26 @@
 <div class="recipe-details">
-  <div class="flex-row space_between title-row">
-    <h1>{{ recipe.name }}</h1>
-  </div>
-  <img [src]="recipe.imagePath" class="img-responsive" style="max-height: 300px;">
-  <div class="flex-row actions">
-    <button mat-icon-button (click)="onAddToShoppingList()">
-      <mat-icon>add_shopping_cart</mat-icon>
-    </button>
-    <button mat-icon-button (click)="onEditRecipe()">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button (click)="onDeleteRecipe()">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
-  <div class="flex-row space_between details">
-    <p>{{ recipe.description }}</p>
-    <ul class="list-group">
-      <li class="ing-title"> <strong>Ingredients</strong> </li>
-      <li class="list-group-item flex-row space_between" *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }} - {{ ingredient.amount }}
-      </li>
-    </ul>
+  <h1 class="title-row">{{ recipe.name }}</h1>
+  <div class="main">
+    <img [src]="recipe.imagePath" class="img-responsive" style="max-height: 300px;">
+    <div class="flex-row actions">
+      <button mat-icon-button (click)="onAddToShoppingList()">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onEditRecipe()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDeleteRecipe()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="flex-row space_between details">
+      <p>{{ recipe.description }}</p>
+      <ul class="list-group">
+        <li class="ing-title"> <strong>Ingredients</strong> </li>
+        <li class="list-group-item flex-row space_between" *ngFor="let ingredient of recipe.ingredients">
+          {{ ingredient.name }} - {{ ingredient.amount }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
