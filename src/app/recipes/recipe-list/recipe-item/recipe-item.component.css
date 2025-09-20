@@ -1,0 +1,41 @@
+a {
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border: 1px dotted #d3d3d3;
+}
+
+.ellipsis {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+h4 {
+	margin-bottom: 1.5rem;
+}
+
+span {
+	background: #ffffff38;
+	border-radius: 5px;
+	padding: 0.1rem 1rem;
+	margin: 1rem 0 0;
+	width: fit-content;
+}
+
+.list-group-item.active {
+	background-color: #3a3a3a;
+	color: #fff;
+	border: none;
+}
+
+.list-group-item.active p {
+	color: #dfdfdf;
+}
+
+.right {
+	justify-content: flex-end;
+}

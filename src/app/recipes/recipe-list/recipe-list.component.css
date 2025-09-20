@@ -1,0 +1,11 @@
+.recipe-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-height: calc(100% - 10rem);
+	overflow: auto;
+}
+
+.space_between {
+	height: 3rem;
+}
