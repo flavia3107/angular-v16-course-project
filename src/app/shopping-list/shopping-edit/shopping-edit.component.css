@@ -33,3 +33,11 @@ button {
 .editMode mat-icon {
 	font-size: 1.5rem;
 }
+
+.small {
+	max-width: 10rem;
+}
+
+span {
+	width: 100%;
+}

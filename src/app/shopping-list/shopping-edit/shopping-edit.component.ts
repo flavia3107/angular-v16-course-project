@@ -1,7 +1,5 @@
 import {
   Component,
-  OnInit,
-  OnDestroy,
   ViewChild,
   Input,
   OnChanges,
@@ -20,10 +18,9 @@ import { ShoppingListService } from '../shopping-list.service';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit, OnChanges, OnDestroy {
+export class ShoppingEditComponent implements OnChanges {
   @ViewChild('f', { static: false }) slForm: NgForm;
   subscription: Subscription;
-  editedItemIndex: number;
   @Input() editedItem: Ingredient;
   @Output() onCloseClicked: EventEmitter<void> = new EventEmitter();
 
@@ -38,51 +35,24 @@ export class ShoppingEditComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  ngOnInit() {
-    this.subscription = this.slService.startedEditing
-      .subscribe(
-        (index: number) => {
-          this.editedItemIndex = index;
-        }
-      );
-  }
-
   onSubmit(form: NgForm) {
     const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
-    if (Object.values(newIngredient).every(val => val)) {
-      console.log('Hereeee', value, newIngredient)
-      if (!!this.editedItem) {
-        this.slService.updateIngredient(this.editedItemIndex, newIngredient);
-      } else {
-        this.slService.addIngredient(newIngredient);
-      }
-      form.reset();
-    }
-  }
-
-  onClear() {
-    if (this.editedItem) {
-      this.slForm?.setValue({
-        name: this.editedItem.name,
-        amount: this.editedItem.amount
-      })
+    if (!!this.editedItem) {
+      this.slService.updateIngredient({ name: this.editedItem.name, amount: value.amount });
     } else {
+      this.slService.addIngredient(newIngredient);
       this.slForm.reset();
     }
+    this.onClose();
   }
 
   onDelete() {
-    this.slService.deleteIngredient(this.editedItemIndex);
-    this.onClear();
+    this.slService.deleteIngredient(this.editedItem);
+    this.onClose();
   }
 
   onClose() {
     this.onCloseClicked.emit();
   }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
 }

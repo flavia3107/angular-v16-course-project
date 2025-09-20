@@ -1,26 +1,22 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <div class="flex-row">
-        <input type="text" id="name" class="form-control" name="name" placeholder="Name" [ngModel]="editedItem?.name"
-          required>
-        <input type="number" id="amount" class="form-control" name="amount" placeholder="Amount"
-          [ngModel]="editedItem?.amount" required pattern="^[1-9]+[0-9]*$">
-        <div class="flex-row" [class.editMode]="!!editedItem">
-          <button mat-icon-button type="submit" [disabled]="!f.valid">
-            <mat-icon>done</mat-icon>
-          </button>
-          <button mat-icon-button type="button" (click)="onDelete()" *ngIf="editedItem">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button type="button" (click)="onClear()">
-            <mat-icon>replay</mat-icon>
-          </button>
-          <button mat-icon-button *ngIf="!!editedItem" type="button" (click)="onClose()">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="flex-row">
+      <input *ngIf="!editedItem" type="text" id="name" class="form-control" name="name" placeholder="Name"
+        [ngModel]="editedItem?.name" required>
+      <span *ngIf="!!editedItem">{{editedItem?.name}}</span>
+      <input type="number" id="amount" class="form-control" name="amount" placeholder="Amount"
+        [ngModel]="editedItem?.amount" required pattern="^[1-9]+[0-9]*$" [class.small]="editedItem">
+      <div class="flex-row" [class.editMode]="!!editedItem">
+        <button mat-icon-button type="submit" [disabled]="!f.valid">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="onDelete()" *ngIf="editedItem">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="!!editedItem" type="button" (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

@@ -2,12 +2,12 @@
   <div>
     <app-shopping-edit></app-shopping-edit>
     <div class="flex-row space_between">
-      <ul class="list-group">
+      <ul *ngIf="(ingredients | async)?.length; else empty" class="list-group">
         <li class="flex-row space_between title">
           <span>Item</span>
           <span>Quantity</span>
         </li>
-        <li *ngFor="let ingredient of ingredients; let i = index">
+        <li *ngFor="let ingredient of (ingredients | async); let i = index">
           <ng-container *ngIf="editMode && activeIndex === i; else showIngredient">
             <app-shopping-edit [editedItem]="ingredient" (onCloseClicked)="closeEditMode()"></app-shopping-edit>
           </ng-container>
@@ -24,3 +24,8 @@
     </div>
   </div>
 </div>
+<ng-template #empty>
+  <div class="empty">
+    <h2 class="empty-message ">No items</h2>
+  </div>
+</ng-template>

@@ -1,25 +1,23 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 export class ShoppingListService {
-  ingredientsChanged = new Subject<Ingredient[]>();
-  startedEditing = new Subject<number>();
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
   ];
-
-  getIngredients() {
-    return this.ingredients.slice();
-  }
+  ingredientsChanged = new BehaviorSubject<Ingredient[]>(this.ingredients);
 
   getIngredient(index: number) {
     return this.ingredients[index];
   }
 
   addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.ingredientsChanged.next(this.ingredients.slice());
+    const itm = this.ingredients.find(ing => ing.name === ingredient.name);
+    if (!itm) {
+      this.ingredients.push(ingredient);
+      this.ingredientsChanged.next(this.ingredients.slice());
+    }
   }
 
   addIngredients(ingredients: Ingredient[]) {
@@ -27,12 +25,15 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  updateIngredient(index: number, newIngredient: Ingredient) {
-    this.ingredients[index] = newIngredient;
+  updateIngredient(newIngredient: Ingredient) {
+    const ingredient = this.ingredients.find(ing => ing.name === newIngredient.name);
+    if (ingredient)
+      ingredient.amount = newIngredient.amount
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  deleteIngredient(index: number) {
+  deleteIngredient(ingredient: Ingredient) {
+    const index = this.ingredients.findIndex(ing => ing.name === ingredient.name);
     this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
