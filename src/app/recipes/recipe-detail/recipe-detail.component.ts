@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { MatDialog } from '@angular/material/dialog'
+import { RecipeEditComponent } from '../recipe-edit/recipe-edit.component';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,7 +15,7 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   constructor(private recipeService: RecipeService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, public dialog: MatDialog,
     private router: Router) {
   }
 
@@ -31,7 +33,14 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onEditRecipe() {
-    this.router.navigate(['edit'], { relativeTo: this.route });
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+    this.dialog.open(RecipeEditComponent, {
+      data: {
+        editMode: true,
+        id: this.id
+      },
+      width: '40%'
+    });
   }
 
   onDeleteRecipe() {
