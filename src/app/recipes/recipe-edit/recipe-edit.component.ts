@@ -1,7 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-
 import { RecipeService } from '../recipe.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -66,10 +64,7 @@ export class RecipeEditComponent implements OnInit {
           recipeIngredients.push(
             new FormGroup({
               name: new FormControl(ingredient.name, Validators.required),
-              amount: new FormControl(ingredient.amount, [
-                Validators.required,
-                Validators.pattern(/^[1-9]+[0-9]*$/)
-              ])
+              amount: new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
             })
           );
         }

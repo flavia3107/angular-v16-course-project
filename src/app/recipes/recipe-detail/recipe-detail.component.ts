@@ -14,10 +14,8 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private recipeService: RecipeService,
-    private route: ActivatedRoute, public dialog: MatDialog,
-    private router: Router) {
-  }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute,
+    public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -33,12 +31,8 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onEditRecipe() {
-    // this.router.navigate(['edit'], { relativeTo: this.route });
     this.dialog.open(RecipeEditComponent, {
-      data: {
-        editMode: true,
-        id: this.id
-      },
+      data: { editMode: true, id: this.id },
       width: '40%'
     });
   }
