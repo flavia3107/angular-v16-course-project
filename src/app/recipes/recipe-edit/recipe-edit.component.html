@@ -2,13 +2,7 @@
 <div mat-dialog-content>
   <div class="row">
     <div class="col-xs-12">
-      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
-            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-          </div>
-        </div>
+      <form [formGroup]="recipeForm">
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
@@ -53,6 +47,7 @@
                 <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
               </div>
             </div>
+            <button mat-button mat-dialog-close (click)="onAddIngredient()">Add Ingredient</button>
           </div>
         </div>
       </form>
@@ -60,7 +55,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button mat-dialog-close (click)="onAddIngredient()">Add Ingredient</button>
-
+  <button mat-button mat-dialog-close [disabled]="!recipeForm.valid" (click)="onSubmit()">Save</button>
+  <button mat-button mat-dialog-close (click)="onCancel()">Close</button>
 </div>

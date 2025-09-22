@@ -19,12 +19,17 @@ export class RecipeEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = +this.data['id'];
-    this.editMode = this.data['editMode'];
+    if (this.data) {
+      this.id = +this.data['id'];
+      this.editMode = this.data['editMode'];
+    }
+
     this.initForm();
   }
 
   onSubmit() {
+    console.log('HERE', this.recipeForm.value)
+
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     } else {
