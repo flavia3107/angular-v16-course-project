@@ -1,0 +1,14 @@
+img {
+	width: 50%;
+}
+
+.flex-row {
+	min-height: calc(100vh - 15rem);
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+h3 {
+	text-align: center;
+	color: #a1a1a1;
+}
