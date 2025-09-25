@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>
+<h1 class="flex-row" mat-dialog-title>
   <mat-icon>{{editMode ? 'edit':'add'}}</mat-icon>
   {{editMode ? 'Edit':'Add'}} Recipe
 </h1>
@@ -61,6 +61,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close [disabled]="!recipeForm.valid" (click)="onSubmit()">Save</button>
   <button mat-button mat-dialog-close (click)="onCancel()">Close</button>
+  <button mat-button mat-dialog-close class="save" [disabled]="!recipeForm.valid" (click)="onSubmit()">Save</button>
 </div>

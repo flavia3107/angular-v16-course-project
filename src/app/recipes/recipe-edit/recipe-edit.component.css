@@ -13,10 +13,38 @@ textarea.ng-invalid.ng-touched {
   float: right;
 }
 
-.end {
-  text-align: end;
+.end .mat-icon {
+  margin-top: -1.5rem;
 }
 
 .mat-icon {
-  color: #d3d3d3;
+  color: #acacac;
+}
+
+.end .mat-icon:hover {
+  color: #b8b8b8;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
+
+.save {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.col-xs-3,
+.col-xs-1 {
+  padding: 0;
+}
+
+.flex-row {
+  align-items: center;
+  gap: 0.5rem;
+  display: flex;
+}
+
+.mat-button-disabled {
+  background-color: #f0f0f0;
 }
