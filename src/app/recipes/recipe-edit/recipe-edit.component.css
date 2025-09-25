@@ -2,3 +2,21 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+.img-responsive {
+  margin-bottom: 1.5rem;
+}
+
+.add {
+  background: #d3d3d3;
+  margin-top: 2rem;
+  float: right;
+}
+
+.end {
+  text-align: end;
+}
+
+.mat-icon {
+  color: #d3d3d3;
+}
