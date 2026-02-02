@@ -41,7 +41,7 @@ It focuses on building an **advanced recipe management application** to **master
 
 ## 🚀 Live Demo
 
-[Demo](https://flavia3107.github.io/angular-v16-course-project/recipes)
+[Demo](https://flavia3107.github.io/angular-v16-course-project/#/recipes)
 
 ## 🎖️ Credits
 
